@@ -6,12 +6,11 @@ on:
     branches:
       - main
       - develop
-      - releases/**
     tags:        
       - v*
 
 env:
-  IMAGE_NAME: kong-api
+  IMAGE_NAME: mo-api
 
 jobs:
   build:
