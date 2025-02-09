@@ -7,7 +7,7 @@ on:
       - main
       - develop
     tags:        
-      - v*
+      - '*'
 
 env:
   IMAGE_NAME: mo-api
@@ -45,6 +45,12 @@ jobs:
             echo "env=dev" >> $GITHUB_OUTPUT
             echo "repo=muzashi777/k8s-calculator-nonprod" >> $GITHUB_OUTPUT
             echo "path_repo=k8s-calculator-nonprod" >> $GITHUB_OUTPUT
+          elif [[ $GITHUB_REF == refs/tags/* ]]; then
+            echo "image_tag=$(echo $GITHUB_REF | cut -d '/' -f 3)-$(git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_OUTPUT
+            echo "ref_tag=uat-$(git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_OUTPUT
+            echo "env=prod" >> $GITHUB_OUTPUT
+            echo "repo=muzashi777/k8s-calculator-prod" >> $GITHUB_OUTPUT
+            echo "path_repo=k8s-calculator-prod" >> $GITHUB_OUTPUT
           fi
 
 
