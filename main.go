@@ -9,6 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// comment
 // Add validateAPIKey middleware function
 func validateAPIKey() gin.HandlerFunc {
 	return func(c *gin.Context) {
